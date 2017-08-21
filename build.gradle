@@ -5,7 +5,10 @@ buildscript {
             url "https://plugins.gradle.org/m2/"
         }
         flatDir {
-            dirs ('C:\\dev\\gradle-acceptance-plugin\\build\\libs', 'C:\\dev\\gradle-gae-deploy-plugin\\build\\libs', 'C:\\dev\\eventhub-client\\build\\libs', 'C:\\dev\\http-utils\\build\\libs')
+            dirs ('C:\\dev\\gradle-acceptance-plugin\\build\\libs',
+                    'C:\\dev\\gradle-gae-deploy-plugin\\build\\libs',
+                    'C:\\dev\\eventhub-client\\build\\libs',
+                    'C:\\dev\\http-utils\\build\\libs')
         }
     }
     dependencies {
@@ -33,7 +36,7 @@ apply plugin: "com.trevorism.gradle.gae.deploy"
 repositories {
     mavenCentral()
     flatDir {
-        dirs 'C:\\dev\\http-utils\\build\\libs'
+        dirs 'C:\\dev\\http-utils\\build\\libs', 'C:\\dev\\domain\\build\\libs', 'C:\\dev\\datastore-client\\build\\libs'
     }
 }
 
@@ -47,8 +50,13 @@ dependencies {
 	compile 'org.glassfish.jersey.media:jersey-media-json-jackson:2.22.2'
 	compile 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.7.3'
 
+    compile ':http-utils:1.0.0'
+    compile ':datastore-client:1.0.0'
+    compile ':domain:1.0.0'
+    compile 'com.google.code.gson:gson:2.8.1'
+    compile 'org.apache.httpcomponents:httpclient:4.5.3'
+
     acceptanceCompile 'info.cukes:cucumber-groovy:1.2.5'
-    acceptanceCompile ':http-utils:1.0.0'
     acceptanceCompile 'org.apache.httpcomponents:httpclient:4.5.3'
 
     testCompile 'junit:junit:4.12'

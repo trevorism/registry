@@ -4,9 +4,38 @@
 <head>
     <meta charset="utf-8">
     <title>Trevorism Service Registry</title>
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/registry.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+
 </head>
 
 <body>
-    <h1> Hello World</h1>
+    <div class="container">
+        <div class="page-header">Trevorism Service Registry</div>
+        <div class="well">
+            <p>The <a href="https://www.trevorism.com">trevorism.com</a> domain is managed by <a href="https://admin.google.com">Google Apps</a></p>
+        </div>
+
+        <div class="page-header">Trevorism Services</div>
+        <table class="table">
+            <thead><tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Url</th>
+                <th>Docs</th>
+                <th>Ping</th>
+            </tr></thead>
+            <tbody id="serviceTableContent">
+
+            </tbody>
+        </table>
+
+        <div class="page-header">Trevorism Internal Libraries</div>
+
+    </div>
 </body>
 </html>
