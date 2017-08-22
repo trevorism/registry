@@ -15,7 +15,7 @@ import javax.ws.rs.core.MediaType
 @Path("/service")
 class ServiceRegistryController {
 
-    Repository<Service> repository = new DatastoreRepository<>(Service)
+    private final Repository<Service> repository = new DatastoreRepository<>(Service)
 
     @GET
     @Path("web")
