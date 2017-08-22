@@ -2,17 +2,34 @@ $(function(){
 
     $.get( "api/service/web", function( data ) {
         for(var i = 0; i < data.length; i++){
-            $("#serviceTableContent").append(renderRow(data[i]));
+            $("#serviceTableContent").append(renderServiceRow(data[i]));
         }
     });
 
-    function renderRow(item){
+    $.get( "api/service/lib", function( data ) {
+        for(var i = 0; i < data.length; i++){
+            $("#internalTableContent").append(renderLibraryRow(data[i]));
+        }
+    });
+
+    function renderServiceRow(item){
+        var url = (item.dns) ? item.dns : item.url;
+
         var row = $("<tr />")
         row.append($("<td>" + item.id + "</td>"));
         row.append($("<td>" + item.name + "</td>"));
-        row.append($("<td><a href='" + item.url + "'>" + item.url + "</a></td>"));
+        row.append($("<td><a href='" + url + "'>" + url + "</a></td>"));
         row.append($("<td><a href='" + item.giturl + "'>" + item.giturl + "</a></td>"));
-        row.append($("<td>" + true + "</td>"));
+        row.append($("<td><a href='" + item.host + "'>" + "<img src='img/go.png' width='16' height='16'/>" + "</a></td>"));
+
+        return row;
+    }
+
+    function renderLibraryRow(item){
+        var row = $("<tr />")
+        row.append($("<td>" + item.id + "</td>"));
+        row.append($("<td>" + item.name + "</td>"));
+        row.append($("<td><a href='" + item.giturl + "'>" + item.giturl + "</a></td>"));
         return row;
     }
 

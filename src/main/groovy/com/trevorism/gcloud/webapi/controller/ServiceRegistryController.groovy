@@ -21,6 +21,7 @@ class ServiceRegistryController {
     @Path("web")
     @Produces(MediaType.APPLICATION_JSON)
     List<Service> listWebServices(){
+        repository.ping()
         repository.list().findAll(){
             it.host.startsWith("https://console.cloud.google.com")
         }
@@ -30,6 +31,7 @@ class ServiceRegistryController {
     @Path("lib")
     @Produces(MediaType.APPLICATION_JSON)
     List<Service> listInternal(){
+        repository.ping()
         repository.list().findAll(){
             it.host.startsWith("internal")
         }
