@@ -1,6 +1,6 @@
 package com.trevorism.gcloud.webapi.controller
 
-import com.trevorism.data.DatastoreRepository
+import com.trevorism.data.PingingDatastoreRepository
 import com.trevorism.data.Repository
 import com.trevorism.domain.Service
 
@@ -15,7 +15,7 @@ import javax.ws.rs.core.MediaType
 @Path("/service")
 class ServiceRegistryController {
 
-    private final Repository<Service> repository = new DatastoreRepository<>(Service)
+    private final Repository<Service> repository = new PingingDatastoreRepository<>(Service)
 
     @GET
     @Path("web")
