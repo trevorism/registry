@@ -1,12 +1,18 @@
 $(function(){
 
+
+    $("#serviceTableContent").append("<img width='32' height='32' src=\"img/loading.gif\"/>");
+    $("#internalTableContent").append("<img width='32' height='32' src=\"img/loading.gif\"/>");
+
     $.get( "api/service/web", function( data ) {
+        $("#serviceTableContent").empty();
         for(var i = 0; i < data.length; i++){
             $("#serviceTableContent").append(renderServiceRow(data[i]));
         }
     });
 
     $.get( "api/service/lib", function( data ) {
+        $("#internalTableContent").empty();
         for(var i = 0; i < data.length; i++){
             $("#internalTableContent").append(renderLibraryRow(data[i]));
         }
