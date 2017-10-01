@@ -43,8 +43,7 @@ dependencies {
 	compile 'org.glassfish.jersey.media:jersey-media-json-jackson:2.22.2'
 	compile 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.7.3'
 
-    compile 'com.trevorism:datastore-client:1.0.0'
-    compile 'com.trevorism:domain:1.0.0'
+    compile 'com.trevorism:datastore-client:1.1.0'
 
     acceptanceCompile 'info.cukes:cucumber-groovy:1.2.5'
     acceptanceCompile 'org.apache.httpcomponents:httpclient:4.5.3'

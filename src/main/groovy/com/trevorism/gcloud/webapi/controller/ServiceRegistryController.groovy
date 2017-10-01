@@ -2,7 +2,7 @@ package com.trevorism.gcloud.webapi.controller
 
 import com.trevorism.data.PingingDatastoreRepository
 import com.trevorism.data.Repository
-import com.trevorism.domain.Service
+import com.trevorism.gcloud.webapi.controller.com.trevorism.gcloud.model.Service
 
 import javax.ws.rs.GET
 import javax.ws.rs.Path
@@ -21,7 +21,6 @@ class ServiceRegistryController {
     @Path("web")
     @Produces(MediaType.APPLICATION_JSON)
     List<Service> listWebServices(){
-        repository.ping()
         repository.list().findAll(){
             it.host.startsWith("https://console.cloud.google.com")
         }
@@ -31,7 +30,6 @@ class ServiceRegistryController {
     @Path("lib")
     @Produces(MediaType.APPLICATION_JSON)
     List<Service> listInternal(){
-        repository.ping()
         repository.list().findAll(){
             it.host.startsWith("internal")
         }

@@ -16,17 +16,13 @@ class RootController {
     }
 
     @GET
-    @Path("")
     String getEndpoints(){
-        '<a href="/api/ping">/ping</a> </br> <a href="/api/help">/help</a>'
+        """
+<a href="/api/ping">Ping</a> </br>
+<a href="/api/service/web">All webapps</a> </br>
+<a href="/api/service/lib">All libraries</a> </br>
+        """
     }
 
-    @GET
-    @Path("help")
-    String help(){
-        return """
-<h3>API documentation for registry </h3><br/><br/>
-HTTP GET <a href="/api/ping">/ping</a> -- Returns "pong" if the application is working
-"""
-    }
+
 }
