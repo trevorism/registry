@@ -21,8 +21,9 @@ class ServiceRegistryController {
     @Path("web")
     @Produces(MediaType.APPLICATION_JSON)
     List<Service> listWebServices(){
+
         repository.list().findAll(){
-            it.host.startsWith("https://console.cloud.google.com")
+            it.host.startsWith("https://console.cloud.google.com") || it.host.startsWith("https://portal.azure.com")
         }
     }
 
