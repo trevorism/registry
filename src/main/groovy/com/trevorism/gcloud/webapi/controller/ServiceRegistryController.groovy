@@ -3,6 +3,7 @@ package com.trevorism.gcloud.webapi.controller
 import com.trevorism.data.PingingDatastoreRepository
 import com.trevorism.data.Repository
 import com.trevorism.gcloud.webapi.controller.com.trevorism.gcloud.model.Service
+import io.swagger.annotations.Api
 
 import javax.ws.rs.GET
 import javax.ws.rs.Path
@@ -12,6 +13,7 @@ import javax.ws.rs.core.MediaType
 /**
  * @author tbrooks
  */
+@Api("Service Operations")
 @Path("/service")
 class ServiceRegistryController {
 
