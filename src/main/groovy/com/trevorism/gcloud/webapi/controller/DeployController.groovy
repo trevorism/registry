@@ -1,10 +1,8 @@
 package com.trevorism.gcloud.webapi.controller
 
-import com.trevorism.data.PingingDatastoreRepository
-import com.trevorism.data.Repository
-import com.trevorism.gcloud.webapi.controller.com.trevorism.gcloud.model.Service
 import io.swagger.annotations.Api
 
+import javax.ws.rs.Consumes
 import javax.ws.rs.POST
 import javax.ws.rs.Path
 import javax.ws.rs.Produces
@@ -22,6 +20,7 @@ class DeployController {
     //private final Repository<Service> repository = new PingingDatastoreRepository<>(Service)
 
     @POST
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     boolean storeDeploy(Map data){
         log.info("Data:: ${data}")
