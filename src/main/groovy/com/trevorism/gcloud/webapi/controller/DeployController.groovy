@@ -24,7 +24,7 @@ import java.util.logging.Logger
 class DeployController {
 
     private static final Logger log = Logger.getLogger(DeployController.class.name)
-    private final Repository<Service> repository = new PingingDatastoreRepository<>(Service)
+    private static final Repository<Service> repository = new PingingDatastoreRepository<>(Service)
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -37,6 +37,11 @@ class DeployController {
         if(found || !service.name)
             return false
 
+        long max = allServices.max{it.id}.id
+        service.id = max + 1
+
         return repository.create(service, headers.getHeaderString(HeadersHttpClient.CORRELATION_ID_HEADER_KEY))
     }
+
+
 }
