@@ -44,4 +44,23 @@ class ServiceTest {
 
 
     }
+
+    @Test
+    void testFromDeployPushButton() {
+        Service expected = new Service(name: "push-button",
+                giturl: "https://github.com/trevorism/push-button.git",
+                host: "https://console.cloud.google.com/appengine/versions?project=trevorism-pushbutton&serviceId=default",
+                url: "https://trevorism-pushbutton.appspot.com",
+                dns: "https://click.trevorism.com")
+
+        Service actual = Service.fromDeploy(new Deploy(application: "trevorism-pushbutton", service: "trevorism-pushbutton", version: "1"))
+
+        assert expected.name == actual.name
+        assert expected.giturl == actual.giturl
+        assert expected.host == actual.host
+        assert expected.url == actual.url
+        assert expected.dns == actual.dns
+
+
+    }
 }

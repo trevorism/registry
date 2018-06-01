@@ -17,10 +17,15 @@ class Service {
         if(!deploy.application || !deploy.service)
             return service
 
+        boolean defaultService = deploy.application.endsWith(deploy.service)
+        if(deploy.service == "trevorism-pushbutton"){
+            deploy.service = "push-button"
+            defaultService = true
+        }
+
         service.name = deploy.service
         service.giturl = "https://github.com/trevorism/${deploy.service}.git"
 
-        boolean defaultService = deploy.application.endsWith(deploy.service)
         service.host = "https://console.cloud.google.com/appengine/versions?project=${deploy.application}&serviceId=${computeServiceId(deploy.service, defaultService)}"
         service.url = computeUrl(deploy, defaultService)
         service.dns = computeDns(deploy, defaultService)
