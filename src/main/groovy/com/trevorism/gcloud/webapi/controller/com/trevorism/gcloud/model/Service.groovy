@@ -61,6 +61,9 @@ class Service {
         if(application == "trevorism-pushbutton"){
             return "click"
         }
+        if(application == "trevorism-predict"){
+            return "predict"
+        }
         return "datastore"
     }
 }
