@@ -6,6 +6,7 @@ import org.junit.Test
  * @author tbrooks
  */
 class ServiceTest {
+
     @Test
     void testFromDeploy() {
         Service expected = new Service(
@@ -22,8 +23,6 @@ class ServiceTest {
         assert expected.host == actual.host
         assert expected.url == actual.url
         assert expected.dns == actual.dns
-
-
     }
 
     @Test
@@ -41,8 +40,6 @@ class ServiceTest {
         assert expected.host == actual.host
         assert expected.url == actual.url
         assert expected.dns == actual.dns
-
-
     }
 
     @Test
@@ -60,8 +57,6 @@ class ServiceTest {
         assert expected.host == actual.host
         assert expected.url == actual.url
         assert expected.dns == actual.dns
-
-
     }
 
     @Test
@@ -79,7 +74,5 @@ class ServiceTest {
         assert expected.host == actual.host
         assert expected.url == actual.url
         assert expected.dns == actual.dns
-
-
     }
 }
