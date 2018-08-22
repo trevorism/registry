@@ -22,6 +22,10 @@ class Service {
             deploy.service = "push-button"
             defaultService = true
         }
+        if(deploy.service == "trevorism-predict"){
+            deploy.service = "predict"
+            defaultService = true
+        }
 
         service.name = deploy.service
         service.giturl = "https://github.com/trevorism/${deploy.service}.git"

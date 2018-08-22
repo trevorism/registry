@@ -63,4 +63,23 @@ class ServiceTest {
 
 
     }
+
+    @Test
+    void testFromDeployPredict() {
+        Service expected = new Service(name: "predict",
+                giturl: "https://github.com/trevorism/predict.git",
+                host: "https://console.cloud.google.com/appengine/versions?project=trevorism-predict&serviceId=default",
+                url: "https://trevorism-predict.appspot.com",
+                dns: "https://predict.trevorism.com")
+
+        Service actual = Service.fromDeploy(new Deploy(application: "trevorism-predict", service: "trevorism-predict", version: "1"))
+
+        assert expected.name == actual.name
+        assert expected.giturl == actual.giturl
+        assert expected.host == actual.host
+        assert expected.url == actual.url
+        assert expected.dns == actual.dns
+
+
+    }
 }
