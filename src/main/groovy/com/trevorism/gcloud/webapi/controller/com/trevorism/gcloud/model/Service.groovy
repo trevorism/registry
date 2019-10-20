@@ -26,10 +26,9 @@ class Service {
             deploy.service = "predict"
             defaultService = true
         }
-        if(deploy.service == "trevorism-auth"){
-            deploy.service = "auth-provider"
-            defaultService = true
-        }
+
+        if(deploy.service.startsWith("auth-") || deploy.service.startsWith("trevorism"))
+            return service
 
         service.name = deploy.service
         service.giturl = "https://github.com/trevorism/${deploy.service}.git"
@@ -71,9 +70,6 @@ class Service {
         }
         if(application == "trevorism-predict"){
             return "predict"
-        }
-        if(application == "trevorism-auth"){
-            return "auth"
         }
         return "datastore"
     }
