@@ -2,6 +2,8 @@ package com.trevorism.gcloud.webapi.controller
 
 import com.trevorism.data.PingingDatastoreRepository
 import com.trevorism.data.Repository
+import com.trevorism.event.WorkCompleteEventProducer
+import com.trevorism.event.model.WorkComplete
 import com.trevorism.gcloud.webapi.controller.com.trevorism.gcloud.model.Deploy
 import com.trevorism.gcloud.webapi.controller.com.trevorism.gcloud.model.Service
 import com.trevorism.http.headers.HeadersHttpClient
@@ -27,13 +29,15 @@ class DeployController {
 
     private static final Logger log = Logger.getLogger(DeployController.class.name)
     private static final Repository<Service> repository = new PingingDatastoreRepository<>(Service)
+    private WorkCompleteEventProducer eventProducer = new WorkCompleteEventProducer()
 
     @ApiOperation(value = "Adds the service if it is not recognized to the registry **Secure")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Secure
-    boolean storeDeploy(@Context HttpHeaders headers, Deploy deployData){
+    boolean storeDeploy(@Context HttpHeaders headers, Deploy deployData) {
+        String correlationId = headers?.getHeaderString(HeadersHttpClient.CORRELATION_ID_HEADER_KEY)
         Service service = Service.fromDeploy(deployData)
         List<Service> allServices = repository.list()
 
@@ -46,7 +50,11 @@ class DeployController {
         long max = allServices.max{it.id}.id
         service.id = max + 1
 
-        return repository.create(service, headers.getHeaderString(HeadersHttpClient.CORRELATION_ID_HEADER_KEY))
+        boolean result = repository.create(service, headers.getHeaderString(HeadersHttpClient.CORRELATION_ID_HEADER_KEY))
+        if(result)
+            eventProducer.sendEvent(new WorkComplete("trevorism-gcloud","registry", correlationId))
+        return result
+
     }
 
 

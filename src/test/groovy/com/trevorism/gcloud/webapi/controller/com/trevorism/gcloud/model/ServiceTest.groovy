@@ -75,4 +75,21 @@ class ServiceTest {
         assert expected.url == actual.url
         assert expected.dns == actual.dns
     }
+
+    @Test
+    void testFromDeployTesting() {
+        Service expected = new Service(name: "testing",
+                giturl: "https://github.com/trevorism/testing.git",
+                host: "https://console.cloud.google.com/appengine/versions?project=trevorism-testing&serviceId=default",
+                url: "https://trevorism-testing.appspot.com",
+                dns: "https://testing.trevorism.com")
+
+        Service actual = Service.fromDeploy(new Deploy(application: "trevorism-testing", service: "trevorism-testing", version: "1"))
+
+        assert expected.name == actual.name
+        assert expected.giturl == actual.giturl
+        assert expected.host == actual.host
+        assert expected.url == actual.url
+        assert expected.dns == actual.dns
+    }
 }

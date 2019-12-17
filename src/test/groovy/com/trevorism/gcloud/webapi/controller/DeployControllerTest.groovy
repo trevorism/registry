@@ -13,7 +13,7 @@ class DeployControllerTest extends GroovyTestCase {
     @Test
     void testStoreDeploy() {
         DeployController dc = new DeployController()
-        assert !dc.storeDeploy([:] as HttpHeaders, new Deploy())
+        assert !dc.storeDeploy([getHeaderString:{name -> "12345"}] as HttpHeaders, new Deploy())
 
     }
 }

@@ -9,7 +9,6 @@ Trevorism service registry shows the services and libraries in Trevorism LLC
 
 [Trevorism Service Registry](http://registry.datastore.trevorism.com/)
 
-
 # How to build
 `gradle clean build`
 

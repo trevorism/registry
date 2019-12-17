@@ -26,6 +26,10 @@ class Service {
             deploy.service = "predict"
             defaultService = true
         }
+        if(deploy.service == "trevorism-testing"){
+            deploy.service = "testing"
+            defaultService = true
+        }
 
         if(deploy.service.startsWith("auth-") || deploy.service.startsWith("trevorism"))
             return service
@@ -70,6 +74,9 @@ class Service {
         }
         if(application == "trevorism-predict"){
             return "predict"
+        }
+        if(application == "trevorism-testing"){
+            return "testing"
         }
         return "datastore"
     }
