@@ -67,7 +67,7 @@ class ServiceTest {
                 url: "https://trevorism-predict.appspot.com",
                 dns: "https://predict.trevorism.com")
 
-        Service actual = Service.fromDeploy(new Deploy(application: "trevorism-predict", service: "trevorism-predict", version: "1"))
+        Service actual = Service.fromDeploy(new Deploy(application: "trevorism-predict", service: "predict", version: "1"))
 
         assert expected.name == actual.name
         assert expected.giturl == actual.giturl
@@ -84,7 +84,7 @@ class ServiceTest {
                 url: "https://trevorism-testing.appspot.com",
                 dns: "https://testing.trevorism.com")
 
-        Service actual = Service.fromDeploy(new Deploy(application: "trevorism-testing", service: "trevorism-testing", version: "1"))
+        Service actual = Service.fromDeploy(new Deploy(application: "trevorism-testing", service: "testing", version: "1"))
 
         assert expected.name == actual.name
         assert expected.giturl == actual.giturl

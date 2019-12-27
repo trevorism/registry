@@ -22,14 +22,6 @@ class Service {
             deploy.service = "push-button"
             defaultService = true
         }
-        if(deploy.service == "trevorism-predict"){
-            deploy.service = "predict"
-            defaultService = true
-        }
-        if(deploy.service == "trevorism-testing"){
-            deploy.service = "testing"
-            defaultService = true
-        }
 
         if(deploy.service.startsWith("auth-") || deploy.service.startsWith("trevorism"))
             return service
@@ -77,6 +69,15 @@ class Service {
         }
         if(application == "trevorism-testing"){
             return "testing"
+        }
+        if(application == "trevorism-build"){
+            return "build"
+        }
+        if(application == "trevorism-project"){
+            return "project"
+        }
+        if(application == "trevorism-data"){
+            return "data"
         }
         return "datastore"
     }
