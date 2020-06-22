@@ -79,6 +79,9 @@ class Service {
         if(application == "trevorism-data"){
             return "data"
         }
+        if(application == "trevorism-trade"){
+            return "trade"
+        }
         return "datastore"
     }
 }
